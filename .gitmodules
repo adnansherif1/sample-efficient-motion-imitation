@@ -1,0 +1,6 @@
+[submodule "DeepMimic"]
+	path = DeepMimic
+	url = https://github.com/klo9klo9kloi/DeepMimic.git
+[submodule "human_dynamics"]
+	path = human_dynamics
+	url = https://github.com/klo9klo9kloi/human_dynamics.git
