@@ -10,8 +10,8 @@ from tqdm import tqdm
 import os
 
 og_path = 'MPI_HDM05/bk/'
-vid_name = 'HDM_bk_01-01_01_120_poses'
-output_path = 'retargeted/'
+vid_name = 'uar4_poses'
+output_path = '../DeepMimic/data/motions/retargeted/'
 fps = 30
 spf = 1/fps
 
@@ -20,7 +20,7 @@ with open(os.path.join(output_path, vid_name+'.txt')) as f:
 
 curr_frames = retarget['Frames']
 
-root_adjust = np.array([0,-0.2,0]) # CHANGE THIS AS NEEDED
+root_adjust = np.array([0, -0.1,0]) # CHANGE THIS AS NEEDED
 
 for i in tqdm(range(len(curr_frames))):
     new_root = np.array(curr_frames[i][1:4])+root_adjust

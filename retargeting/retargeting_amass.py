@@ -14,11 +14,12 @@ one_d_rotations = [4, 7, 10, 13]
 elbows = [7, 13]
 out_path = '../DeepMimic/data/motions/retargeted'
 
-def run(vid, viz=False):
+def run(vid, viz=False, all_case=None):
     # ------------------------------------------------------------------------------------------------------------------
 
     # load data
     vid_data = np.load(vid, allow_pickle=True)
+    assert(vid_data['poses'].shape[-1] == 156), 'poses are of dim ' + str(len(vid_data['poses']))  # expecting SMPL-H format, otherwise retargeting isn't guaranteed to work
     data = vid_data['poses'][:, :66]
     T = data.shape[0]
     data = data.reshape(T, -1, 3)
@@ -95,8 +96,11 @@ def run(vid, viz=False):
     np.set_printoptions(suppress=True)
 
     # orientation correction
-    animate_single(posed)
-    root_adjust = get_root_correction(int(input('which case? (0/1/2/any number)')))
+    if all_case is None:
+        animate_single(posed)
+        root_adjust = get_root_correction(int(input('which case? (0/1/2/any number)')))
+    else:
+        root_adjust = get_root_correction(all_case)
 
     # ------------------------------------------------- visualize retarget-----------------------------------------------------------------
 
@@ -189,10 +193,11 @@ def run(vid, viz=False):
         compare_animate(corrected, check)
 
 if __name__ == "__main__":
-    vid = '../MPI_HDM05/mm/HDM_mm_08-01_01_120_poses.npz'
-    run(vid, True)
+    # vid = '../MPI_HDM05/mm/HDM_mm_08-01_01_120_poses.npz'
+    # run(vid, True)
 
-    # import glob as glob
-    # all_vids = glob.glob('MPI_HDM05/*/*')
-    # for vid in all_vids:
-        # run(vid)
+    import glob as glob
+    all_vids = glob.glob('../MPI_Limits/*/*')
+    for vid in all_vids:
+        print("Processing %s" % vid)
+        run(vid, all_case=0)
