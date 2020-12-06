@@ -85,9 +85,9 @@ class SAC_Trainer(object):
             if t % self.params['steps_per_epoch'] == 0 and epoch > 0:
                 print('\nLogging...')
                 self.perform_logging(epoch, self.agent.ac, all_logs)
-                if self.params['save_params']:
+                if self.params['save_params'] and epoch > 1 and (epoch-1) % self.params['save_every'] == 0:
                     print('\nSaving... ')
-                    self.agent.save(self.params['logdir'], itr)
+                    self.agent.save(self.params['logdir'], epoch)
 
     ####################################
     ####################################
