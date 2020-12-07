@@ -37,7 +37,7 @@ git submodule init
 git submodule update
 
 cd DeepMimic
-pip install -r requirements.txt
+sudo pip install -r requirements.txt
 ```
 at this stage, check to make sure the python3 path in DeepMimicCore/Makefile is correct on this instance. If not, you have to find the correct path, which may be in /usr/include or /opt/anacadonda3. Any python3 version 3.6 and above should work, so this is flexible. For the lib path, it usually works to include 'm' at the end even if pythonXm doesn't actually exist.
 
