@@ -3,7 +3,7 @@ import glob
 import os
 from tqdm import tqdm
 
-source_dir = '../DeepMimic/data/motions/MPI_Limits'
+source_dir = '../DeepMimic/data/motions/test'
 
 if not os.path.exists(source_dir+'_armsonly'):
     os.makedirs(source_dir+'_armsonly')
