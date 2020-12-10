@@ -16,6 +16,6 @@ python mpi_run.py --arg_file args/train_humanoid3d_backflip_args.txt --num_worke
 Training takes a while, so it is recommended to use tmux to keep the docker image up while you go about your day. If you get into errno=1 when running mpi, try ```export OMPI_MCA_btl_vader_single_copy_mechanism=none``` before running again as suggested [here](https://github.com/open-mpi/ompi/issues/4948). 
 
 ## Training Management
-Make sure tmux is installed, run `tmux`, run the commands you need to set up training on docker, then detach from tmux by holding `CTRL+B` simultaneously and quickly pressing `D`. To go back into your tmux session, run `tmux attach -t 0`. 
+Make sure tmux is installed, run `tmux`, run the commands you need to set up training on docker, then detach from tmux using `CTRL+B d` (hold ctrl and b simultaneously and quickly pressing d). To go back into your tmux session, run `tmux attach -t 0`. 
 
 You can also create multiple panes within tmux using `CTRL+B %`. Navigation is done using `CTRL+B ARROWKEY`.
