@@ -3,7 +3,7 @@ import glob
 import os
 from tqdm import tqdm
 
-source_dir = '../DeepMimic/data/motions/MPI_Limits'
+source_dir = '../DeepMimic/data/motions/test'
 
 if not os.path.exists(source_dir+'_armsonly'):
     os.makedirs(source_dir+'_armsonly')
@@ -16,7 +16,7 @@ for mf in all_motion_files:
 
     new_data = []
     for frame in data['Frames']:
-    	new_data.append([frame[0]] + [0, 0.78, 0] + [1,0,0,0] + frame[8:16] + frame[25:30] + frame[39:]) # arms only
+    	new_data.append([frame[0]] + [0, 0.78, 0] + [1,0,0,0] + frame[25:30] + frame[39:]) # arms only
         # new_data.append(frame[:16] + frame[25:30] + frame[39:]) # all upper body
 
     data['Frames'] = new_data
