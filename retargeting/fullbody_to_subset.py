@@ -16,8 +16,9 @@ for mf in all_motion_files:
 
     new_data = []
     for frame in data['Frames']:
-    	new_data.append([frame[0]] + [0, 0.78, 0] + [1,0,0,0] + frame[25:30] + frame[39:]) # arms only
-        # new_data.append(frame[:16] + frame[25:30] + frame[39:]) # all upper body
+    	new_data.append(frame[0:1] + [0, 0.78, 0, 1, 0, 0, 0] + frame[25:30] + frame[39:]) # arms only
+        # new_data.append(frame[:16] + frame[25:30] + frame[39:]) # all upper body + root motion
+        # new_data.append(frame[0:1] + [0, 0.78, 0, 1,0,0,0] + frame[8:16] + frame[25:30] + frame[39:]) # all upper body, no root motion
 
     data['Frames'] = new_data
 

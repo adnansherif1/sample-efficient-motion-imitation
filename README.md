@@ -19,3 +19,6 @@ Training takes a while, so it is recommended to use tmux to keep the docker imag
 Make sure tmux is installed, run `tmux`, run the commands you need to set up training on docker, then detach from tmux using `CTRL+B d` (hold ctrl and b simultaneously and quickly pressing d). To go back into your tmux session, run `tmux attach -t 0`. 
 
 You can also create multiple panes within tmux using `CTRL+B %`. Navigation is done using `CTRL+B ARROWKEY`.
+
+## Finetuning
+Look at `args/ft_ours_ags.txt` for the format. You basically just add a model checkpoint to a regular train file. Make sure all other params are the same as the base file used for training. 
